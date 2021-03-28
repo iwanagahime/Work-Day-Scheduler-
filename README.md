@@ -2,7 +2,7 @@
 
 ## Project Link
 
-Click [here]() to view project on GitHub pages.
+Click [here](https://iwanagahime.github.io/Work-Day-Scheduler-/) to view project on GitHub pages.
 
 ## Description
 
@@ -20,7 +20,7 @@ We were asked to
 - Open the `script.js` file in your default browser
 
 ```
-git clone
+git clone https://iwanagahime.github.io/Work-Day-Scheduler-/
 code .
 ```
 
