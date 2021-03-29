@@ -32,10 +32,5 @@ const timeBlocks = [
 ].map((i) => Number(i));
 console.log(timeBlocks);
 
-// TODO how to convert array of strings into array of numbers
-// const numberTimeBlocks = timeBlocks.split(",").map(function (item) {
-//   return parseInt(item, 2);
-// });
-
-// declaring updateTimeBlocks function
-const updateTimeBlocks = () => {};
+//TODO declaring updateTimeBlocks function
+const updateTimeBlocks = (timeBlocks, formatted) => {};
