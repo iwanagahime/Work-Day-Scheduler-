@@ -10,9 +10,10 @@ const renderCurrentDate = () => {
 const renderCalendarEvents = () => {
   const calendarEvents = localStorage.getItem("calendarEvents");
   console.log(calendarEvents);
-
+  // if data is present in local storage
   if (calendarEvents !== null) {
     console.log("TODO- render the data in the table");
+    // if there is no data in local storage
   } else {
     localStorage.setItem("calendarEvents", JSON.stringify({}));
   }
