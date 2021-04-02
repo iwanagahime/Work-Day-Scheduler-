@@ -31,6 +31,7 @@ const renderCalendarEvents = () => {
       }
       //matching events with time blocks
       const plannedEvent = calendarEvents[timeBlockTime];
+
       textArea.text(plannedEvent);
     };
 
@@ -40,10 +41,22 @@ const renderCalendarEvents = () => {
     localStorage.setItem("calendarEvents", JSON.stringify({}));
   }
 };
+
+// function to save calendar events in
 const onClick = function (event) {
+  const calendarEvents = JSON.parse(localStorage.getItem("calendarEvents"));
   const target = $(event.target);
+  const currentTarget = $(event.currentTarget);
   if (target.is("button")) {
-    console.log("save button clicked");
+    const key = target.attr("id");
+    const value = target.parent().find("textarea").val();
+    key, value;
+    const newEvent = {
+      ...calendarEvents,
+      [key]: value,
+    };
+    localStorage.setItem("calendarEvents", JSON.stringify(newEvent));
+    console.log(calendarEvent);
   }
 };
 
