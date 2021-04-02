@@ -37,15 +37,19 @@ const renderCalendarEvents = () => {
     timeBlocks.each(callback);
     // if there is no data in local storage
   } else {
-    localStorage.setItem(
-      "calendarEvents",
-      JSON.stringify({ 9: "dinner", 14: "nap" })
-    );
+    localStorage.setItem("calendarEvents", JSON.stringify({}));
+  }
+};
+const onClick = function (event) {
+  const target = $(event.target);
+  if (target.is("button")) {
+    console.log("save button clicked");
   }
 };
 
-// onLoad function
 const onReady = () => {
+  // setting event listener on container
+  $(".container").click(onClick);
   renderCurrentDate();
 
   renderCalendarEvents();
