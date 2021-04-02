@@ -1,21 +1,27 @@
-// declaring current formatted date
-const currentDay = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
-console.log(currentDay);
+//
+const renderCurrentDate = () => {
+  const dateTime = $("#currentDay");
+  displayNow = moment().format("dddd, MMMM Do");
+  console.log(displayNow);
+  dateTime.text(displayNow);
+};
 
-// A $( document ).ready() block.
-$(document).ready(function () {
-  // setting current date to <p>
-  $("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
-
+const onReady = () => {
+  renderCurrentDate();
   console.log("ready!");
-});
+};
+$(document).ready(onReady);
+
+const eventInput = document.getElementById("#textarea");
+// declaring current formatted date
+const currentDay = moment().format("dddd, MMMM Do");
+console.log(currentDay);
 
 // get and format current hour
 const now = new Date(Date.now());
 console.log(now);
 
-const formatted =
-  now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 console.log(formatted);
 
 // declare an array of time blocks and converting it to an array of numbers
@@ -33,4 +39,26 @@ const timeBlocks = [
 console.log(timeBlocks);
 
 //TODO declaring updateTimeBlocks function
-const updateTimeBlocks = (timeBlocks, formatted) => {};
+// const timeBlocks = document.querySelectorAll("row time-block");
+
+const updateTimeBlocks = () => {
+  return;
+};
+//
+// $("#textarea").html("Meeting");
+// localStorage.content = $("#textarea").html();
+// $("#textarea").html(localStorage.content);
+
+// Retrieving data from local storage
+
+// TODO sth is wrong with the scope and it does not read from local storage
+const renderEvents = () => {};
+// read from local storage
+const plannerEvents = localStorage.getItem("plannerEvents");
+if (plannerEvents !== null) {
+  console.log("TODO - render data in the table");
+} else {
+  localStorage.setItem("plannerEvents", JSON.stringify({}));
+  // if present display in time blocks
+  eventInput.textContent = plannerEvents;
+}
