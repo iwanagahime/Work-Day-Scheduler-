@@ -8,7 +8,7 @@ const renderCurrentDate = () => {
 
 // getting data from local storage
 const renderCalendarEvents = () => {
-  const calendarEvents = localStorage.getItem("calendarEvents");
+  const calendarEvents = JSON.parse(localStorage.getItem("calendarEvents"));
 
   // if data is present in local storage
   if (calendarEvents !== null) {
@@ -19,22 +19,28 @@ const renderCalendarEvents = () => {
     // declaring and populating timeBlocksArray
 
     const timeBlocks = $(".container").find(".row");
-    console.log(timeBlocks);
 
     const callback = function () {
+      const textArea = $(this).find("textarea");
       const timeBlockTime = Number.parseInt($(this).data("time"), 10);
       // set new classes to display color blocks
       if (timeBlockTime === currentHour) {
-        $(this).find("textarea").removeClass("past").addClass("present");
+        textArea.removeClass("past").addClass("present");
       } else if (timeBlockTime > currentHour) {
-        $(this).find("textarea").removeClass("past").addClass("future");
+        textArea.removeClass("past").addClass("future");
       }
+      //matching events with time blocks
+      const plannedEvent = calendarEvents[timeBlockTime];
+      textArea.text(plannedEvent);
     };
 
     timeBlocks.each(callback);
     // if there is no data in local storage
   } else {
-    localStorage.setItem("calendarEvents", JSON.stringify({}));
+    localStorage.setItem(
+      "calendarEvents",
+      JSON.stringify({ 9: "dinner", 14: "nap" })
+    );
   }
 };
 
