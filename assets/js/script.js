@@ -17,7 +17,8 @@ const renderCalendarEvents = () => {
     const currentHour = moment().hour();
 
     // declaring timeBlocksArray
-    const timeBlocks = $(".container.row");
+    // const timeBlocks = $(".container.row");
+    const timeBlocks = $(".container").find(".row");
     console.log(timeBlocks);
 
     const callback = function () {
