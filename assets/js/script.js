@@ -1,4 +1,4 @@
-//
+// getting current date from moment.js, formating it and appending to <p> element
 const renderCurrentDate = () => {
   const dateTime = $("#currentDay");
   displayNow = moment().format("dddd, MMMM Do");
@@ -6,9 +6,22 @@ const renderCurrentDate = () => {
   dateTime.text(displayNow);
 };
 
+// getting data from local storage
+const renderCalendarEvents = () => {
+  const calendarEvents = localStorage.getItem("calendarEvents");
+  console.log(calendarEvents);
+
+  if (calendarEvents !== null) {
+    console.log("TODO- render the data in the table");
+  } else {
+    localStorage.setItem("calendarEvents", JSON.stringify({}));
+  }
+};
+// onLoad function
 const onReady = () => {
   renderCurrentDate();
   console.log("ready!");
+  renderCalendarEvents();
 };
 $(document).ready(onReady);
 
