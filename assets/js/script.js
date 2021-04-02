@@ -10,9 +10,12 @@ const renderCurrentDate = () => {
 const renderCalendarEvents = () => {
   const calendarEvents = localStorage.getItem("calendarEvents");
   console.log(calendarEvents);
+  // getting currentHour using moment.js
+  const currentHour = moment().hour();
+  console.log(currentHour);
   // if data is present in local storage
   if (calendarEvents !== null) {
-    console.log("TODO- render the data in the table");
+    console.log("TODO- render the data and colors in the table");
     // if there is no data in local storage
   } else {
     localStorage.setItem("calendarEvents", JSON.stringify({}));
@@ -32,8 +35,6 @@ const currentDay = moment().format("dddd, MMMM Do");
 console.log(currentDay);
 
 // get and format current hour
-const now = new Date(Date.now());
-console.log(now);
 
 now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 console.log(formatted);
