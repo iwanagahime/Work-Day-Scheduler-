@@ -16,15 +16,19 @@ const renderCalendarEvents = () => {
     // getting current hour using moment.js
     const currentHour = moment().hour();
 
-    // declaring timeBlocksArray
-    // const timeBlocks = $(".container.row");
+    // declaring and populating timeBlocksArray
+
     const timeBlocks = $(".container").find(".row");
     console.log(timeBlocks);
 
     const callback = function () {
-      const timeBlockTime = $(this).data("time");
-
-      console.log($(this));
+      const timeBlockTime = Number.parseInt($(this).data("time"), 10);
+      // set new classes to display color blocks
+      if (timeBlockTime === currentHour) {
+        $(this).find("textarea").removeClass("past").addClass("present");
+      } else if (timeBlockTime > currentHour) {
+        $(this).find("textarea").removeClass("past").addClass("future");
+      }
     };
 
     timeBlocks.each(callback);
