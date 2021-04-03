@@ -12,7 +12,6 @@ const renderCalendarEvents = () => {
 
   // if data is present in local storage
   if (calendarEvents !== null) {
-    // TODO render data and colour
     // getting current hour using moment.js
     const currentHour = moment().hour();
 
@@ -60,8 +59,8 @@ const onClick = function (event) {
   }
 };
 
+// on load function
 const onReady = () => {
-  // setting event listener on container
   $(".container").click(onClick);
   renderCurrentDate();
 
