@@ -20,7 +20,7 @@ const renderCalendarEvents = () => {
 
     const timeBlocks = $(".container").find(".row");
 
-    const callback = function () {
+    const setTimeClasses = function () {
       const textArea = $(this).find("textarea");
       const timeBlockTime = Number.parseInt($(this).data("time"), 10);
       // set new classes to display color blocks
@@ -35,14 +35,14 @@ const renderCalendarEvents = () => {
       textArea.text(plannedEvent);
     };
 
-    timeBlocks.each(callback);
+    timeBlocks.each(setTimeClasses);
     // if there is no data in local storage
   } else {
     localStorage.setItem("calendarEvents", JSON.stringify({}));
   }
 };
 
-// function to save calendar events in
+// saving calendar events in local storage
 const onClick = function (event) {
   const calendarEvents = JSON.parse(localStorage.getItem("calendarEvents"));
   const target = $(event.target);
@@ -50,7 +50,7 @@ const onClick = function (event) {
   if (target.is("button")) {
     const key = target.attr("id");
     const value = target.parent().find("textarea").val();
-    key, value;
+
     const newEvent = {
       ...calendarEvents,
       [key]: value,
